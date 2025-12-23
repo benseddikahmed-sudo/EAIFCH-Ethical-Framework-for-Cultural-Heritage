@@ -1,0 +1,365 @@
+{
+  "_comment": "Fichier 1: cultural_sensitivity_matrix.json",
+  "_description": "Matrice complète de sensibilité culturelle avec 7 catégories principales",
+  
+  "version": "1.0.0",
+  "last_updated": "2024-12-22",
+  
+  "sensitivity_matrix": {
+    "sacred_texts": {
+      "base_sensitivity": 85,
+      "risk_factors": {
+        "unauthorized_reproduction": 0.9,
+        "decontextualization": 0.85,
+        "commercial_exploitation": 0.95,
+        "misinterpretation": 0.8,
+        "translation_issues": 0.7
+      },
+      "protection_measures": [
+        "watermarking",
+        "access_control_strict",
+        "community_oversight",
+        "cultural_protocols",
+        "attribution_mandatory"
+      ],
+      "consultation_protocol": "free_prior_informed_consent",
+      "unesco_category": "intangible_cultural_heritage",
+      "care_principles": ["collective_benefit", "authority_to_control", "responsibility", "ethics"]
+    },
+    
+    "human_remains": {
+      "base_sensitivity": 95,
+      "risk_factors": {
+        "disrespect_ancestors": 1.0,
+        "unauthorized_display": 0.95,
+        "scientific_exploitation": 0.9,
+        "tourism_commodification": 0.85,
+        "inadequate_storage": 0.8
+      },
+      "protection_measures": [
+        "repatriation_priority",
+        "no_public_display",
+        "sacred_protocols",
+        "family_consultation",
+        "spiritual_considerations"
+      ],
+      "consultation_protocol": "full_consensus_required",
+      "unesco_category": "cultural_heritage",
+      "care_principles": ["collective_benefit", "authority_to_control", "responsibility", "ethics"],
+      "legal_frameworks": ["NAGPRA", "UNDRIP", "national_legislation"]
+    },
+    
+    "ceremonial_sites": {
+      "base_sensitivity": 75,
+      "risk_factors": {
+        "location_disclosure": 0.9,
+        "unauthorized_access": 0.85,
+        "photography_unauthorized": 0.8,
+        "tourist_disturbance": 0.75,
+        "archaeological_damage": 0.95
+      },
+      "protection_measures": [
+        "gps_obfuscation",
+        "access_restrictions",
+        "visitor_protocols",
+        "seasonal_closures",
+        "community_guides"
+      ],
+      "consultation_protocol": "informed_consultation",
+      "unesco_category": "cultural_heritage",
+      "care_principles": ["authority_to_control", "responsibility"]
+    },
+    
+    "traditional_knowledge": {
+      "base_sensitivity": 70,
+      "risk_factors": {
+        "biopiracy": 0.95,
+        "patent_misappropriation": 0.9,
+        "commercial_exploitation": 0.85,
+        "decontextualization": 0.8,
+        "intellectual_property_theft": 0.9
+      },
+      "protection_measures": [
+        "benefit_sharing_agreements",
+        "patent_protection",
+        "community_ownership",
+        "usage_restrictions",
+        "documentation_protocols"
+      ],
+      "consultation_protocol": "benefit_sharing_negotiation",
+      "unesco_category": "intangible_cultural_heritage",
+      "care_principles": ["collective_benefit", "authority_to_control", "responsibility"],
+      "legal_frameworks": ["CBD", "Nagoya_Protocol", "national_legislation"]
+    },
+    
+    "artistic_expressions": {
+      "base_sensitivity": 55,
+      "risk_factors": {
+        "copyright_infringement": 0.8,
+        "cultural_appropriation": 0.85,
+        "commercial_reproduction": 0.75,
+        "decontextualization": 0.7,
+        "misrepresentation": 0.65
+      },
+      "protection_measures": [
+        "copyright_protection",
+        "attribution_required",
+        "context_preservation",
+        "cultural_sensitivity",
+        "community_approval"
+      ],
+      "consultation_protocol": "informed_notification",
+      "unesco_category": "intangible_cultural_heritage",
+      "care_principles": ["collective_benefit", "responsibility"]
+    },
+    
+    "historical_documents": {
+      "base_sensitivity": 50,
+      "risk_factors": {
+        "privacy_breach": 0.8,
+        "misinterpretation": 0.7,
+        "political_sensitivity": 0.75,
+        "reputational_harm": 0.7,
+        "incomplete_context": 0.65
+      },
+      "protection_measures": [
+        "privacy_redaction",
+        "contextual_information",
+        "critical_analysis",
+        "balanced_representation",
+        "stakeholder_review"
+      ],
+      "consultation_protocol": "stakeholder_engagement",
+      "unesco_category": "documentary_heritage",
+      "care_principles": ["responsibility", "ethics"]
+    },
+    
+    "linguistic_materials": {
+      "base_sensitivity": 65,
+      "risk_factors": {
+        "language_extinction_acceleration": 0.9,
+        "cultural_erosion": 0.85,
+        "misuse_by_outsiders": 0.75,
+        "commercial_exploitation": 0.7,
+        "context_loss": 0.8
+      },
+      "protection_measures": [
+        "community_control",
+        "revitalization_priority",
+        "speaker_consent",
+        "cultural_protocols",
+        "educational_focus"
+      ],
+      "consultation_protocol": "community_led_process",
+      "unesco_category": "intangible_cultural_heritage",
+      "care_principles": ["collective_benefit", "authority_to_control", "responsibility"]
+    }
+  },
+  
+  "risk_assessment_thresholds": {
+    "critical": {
+      "score_min": 75,
+      "actions_required": [
+        "immediate_halt",
+        "legal_review",
+        "community_consultation",
+        "ethics_committee_review"
+      ],
+      "timeline": "6-12 months"
+    },
+    "high": {
+      "score_min": 50,
+      "actions_required": [
+        "comprehensive_assessment",
+        "stakeholder_consultation",
+        "risk_mitigation_plan"
+      ],
+      "timeline": "3-6 months"
+    },
+    "medium": {
+      "score_min": 25,
+      "actions_required": [
+        "standard_assessment",
+        "documentation_review",
+        "conditional_approval"
+      ],
+      "timeline": "1-3 months"
+    },
+    "low": {
+      "score_min": 0,
+      "actions_required": [
+        "basic_assessment",
+        "attribution_requirements"
+      ],
+      "timeline": "1-4 weeks"
+    }
+  },
+  
+  "unesco_categories_reference": {
+    "cultural_heritage": {
+      "definition": "Monuments, groups of buildings and sites with historical, aesthetic, archaeological, scientific, ethnological or anthropological value",
+      "conventions": ["1972 World Heritage Convention"],
+      "principles": ["authenticity", "integrity", "protection", "conservation"]
+    },
+    "intangible_cultural_heritage": {
+      "definition": "Practices, representations, expressions, knowledge, skills transmitted from generation to generation",
+      "conventions": ["2003 Convention for the Safeguarding of ICH"],
+      "domains": ["oral_traditions", "performing_arts", "social_practices", "knowledge_about_nature", "traditional_craftsmanship"]
+    },
+    "documentary_heritage": {
+      "definition": "Documents and archives of significant value to communities, cultures and individuals",
+      "programs": ["Memory of the World"],
+      "principles": ["accessibility", "preservation", "authenticity"]
+    }
+  },
+  
+  "care_principles_implementation": {
+    "collective_benefit": {
+      "description": "Data ecosystems shall be designed and function in ways that enable Indigenous Peoples to derive benefit from the data",
+      "implementation_steps": [
+        "identify_community_benefits",
+        "negotiate_benefit_sharing",
+        "ensure_community_access",
+        "support_capacity_building",
+        "facilitate_knowledge_return"
+      ],
+      "metrics": ["community_satisfaction", "capacity_built", "resources_returned"]
+    },
+    "authority_to_control": {
+      "description": "Indigenous Peoples' rights and interests in Indigenous data must be recognised and their authority to control such data be empowered",
+      "implementation_steps": [
+        "recognize_data_sovereignty",
+        "establish_governance_protocols",
+        "respect_community_decisions",
+        "support_self_determination",
+        "enable_veto_power"
+      ],
+      "metrics": ["decision_making_power", "governance_effectiveness", "community_control"]
+    },
+    "responsibility": {
+      "description": "Those working with Indigenous data have a responsibility to share how data are used to support Indigenous Peoples' self-determination and collective benefit",
+      "implementation_steps": [
+        "transparent_reporting",
+        "ongoing_communication",
+        "accountability_mechanisms",
+        "impact_assessment",
+        "responsive_adjustment"
+      ],
+      "metrics": ["transparency_level", "community_trust", "response_time"]
+    },
+    "ethics": {
+      "description": "Indigenous Peoples' rights and wellbeing should be the primary concern at all stages of the data life cycle",
+      "implementation_steps": [
+        "ethical_review_mandatory",
+        "cultural_sensitivity_training",
+        "harm_prevention_protocols",
+        "respectful_engagement",
+        "ongoing_consent"
+      ],
+      "metrics": ["ethical_compliance", "harm_incidents", "community_wellbeing"]
+    }
+  },
+  
+  "consultation_protocols_detailed": {
+    "free_prior_informed_consent": {
+      "description": "Full community consensus required before any action",
+      "steps": [
+        "comprehensive_information_provision",
+        "adequate_time_for_consideration",
+        "community_decision_making_process",
+        "documented_consent",
+        "ongoing_consent_verification"
+      ],
+      "minimum_duration": "6 months",
+      "requirements": [
+        "culturally_appropriate_communication",
+        "language_accessibility",
+        "elder_involvement",
+        "youth_inclusion",
+        "written_agreement"
+      ],
+      "withdrawal_rights": "anytime",
+      "legal_basis": ["UNDRIP", "ILO_169", "CBD"]
+    },
+    
+    "informed_consultation": {
+      "description": "Meaningful engagement with stakeholders",
+      "steps": [
+        "stakeholder_identification",
+        "information_sharing",
+        "feedback_collection",
+        "consideration_of_concerns",
+        "documentation"
+      ],
+      "minimum_duration": "3 months",
+      "requirements": [
+        "accessible_information",
+        "multiple_consultation_rounds",
+        "documented_responses",
+        "good_faith_engagement"
+      ],
+      "withdrawal_rights": "until_final_decision"
+    },
+    
+    "stakeholder_engagement": {
+      "description": "Notification and input opportunity for interested parties",
+      "steps": [
+        "public_notification",
+        "comment_period",
+        "review_of_input",
+        "decision_justification"
+      ],
+      "minimum_duration": "1 month",
+      "requirements": [
+        "public_accessibility",
+        "clear_communication",
+        "documented_process"
+      ]
+    }
+  },
+  
+  "access_control_tiers": {
+    "tier_0_public": {
+      "description": "Open access with minimal restrictions",
+      "permissions": ["view", "download", "cite", "educational_use"],
+      "restrictions": ["attribution_required", "non_commercial_preferred"],
+      "monitoring": "basic_analytics"
+    },
+    "tier_1_authenticated": {
+      "description": "Registered users with verified identity",
+      "permissions": ["view", "download_limited", "research_use"],
+      "restrictions": ["attribution_mandatory", "usage_reporting", "non_commercial"],
+      "monitoring": "user_tracking"
+    },
+    "tier_2_community": {
+      "description": "Community members and approved researchers",
+      "permissions": ["view", "contextual_access", "community_use"],
+      "restrictions": ["community_approval", "strict_attribution", "no_reproduction"],
+      "monitoring": "detailed_logging"
+    },
+    "tier_3_restricted": {
+      "description": "Metadata only, full access requires explicit permission",
+      "permissions": ["metadata_view", "request_access"],
+      "restrictions": ["case_by_case_approval", "ceremonial_context_only"],
+      "monitoring": "comprehensive_audit"
+    }
+  },
+  
+  "green_metrics_benchmarks": {
+    "co2_per_assessment": {
+      "python_only": "0.086g",
+      "rust_core": "0.0015g",
+      "reduction_percentage": 98.3
+    },
+    "energy_per_1000_assessments": {
+      "python_only": "0.18 Wh",
+      "rust_core": "0.003 Wh",
+      "reduction_percentage": 98.3
+    },
+    "annual_impact_10k_users": {
+      "co2_saved": "845 kg",
+      "equivalent_km_car": 4225,
+      "trees_equivalent": 38
+    }
+  }
+}
