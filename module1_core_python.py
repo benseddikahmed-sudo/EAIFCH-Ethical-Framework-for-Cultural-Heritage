@@ -2,7 +2,7 @@
 # MODULE 1: ETHICAL ASSESSMENT PROTOCOL
 # Fichier: module_1_ethical_assessment/__init__.py
 # ============================================================================
-
+https://doi.org/10.5281/zenodo.18048554
 """
 EAIFCH - Ethical AI Framework for Cultural Heritage
 Module 1: Ethical Assessment Protocol
@@ -12,7 +12,7 @@ culturel avant leur numérisation et diffusion.
 """
 
 __version__ = "1.0.0"
-__author__ = "Benseddik"
+__author__ = "Benseddik.Ahmed"
 
 from .core.cultural_taxonomy import CulturalTaxonomy
 from .core.sensitivity_classifier import SensitivityClassifier
