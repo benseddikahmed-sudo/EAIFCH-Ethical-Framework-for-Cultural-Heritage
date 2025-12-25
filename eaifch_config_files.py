@@ -56,8 +56,8 @@ git --version
 ### Installation Rapide
 ```bash
 # Cloner le repository
-git clone https://github.com/VOTRE_USERNAME/EAIFCH-Framework.git
-cd EAIFCH-Framework
+git https://github.com/benseddikahmed-sudo/EAIFCH-Ethical-Framework-for-Cultural-Heritage
+
 
 # Installation Python
 pip install -e .
