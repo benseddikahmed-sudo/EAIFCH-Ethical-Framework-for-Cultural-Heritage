@@ -207,7 +207,7 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guid
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/eaifch-framework.git
+git.https://github.com/benseddikahmed-sudo/EAIFCH-Ethical-Framework-for-Cultural-Heritage clone .git
 cd eaifch-framework
 
 # Install dependencies
@@ -245,14 +245,14 @@ This project is licensed under the GNU General Public License v3.0 - see [LICENS
 
 - **Documentation**: [https://eaifch.readthedocs.io](https://eaifch.readthedocs.io)
 - **Pre-registration**: Open Science Framework
-- **Data Archive**: Zenodo with DOI
-- **Issue Tracker**: [GitHub Issues](https://github.com/yourusername/eaifch-framework/issues)
+- **Data Archive**: [Zenodo with DOI](https://doi.org/10.5281/zenodo.18055206)
+- **Issue Tracker**(https://github.com/benseddikahmed-sudo/EAIFCH-Ethical-Framework-for-Cultural-Heritage)
 
 ## 📧 Contact
 
-- **Author**: Benseddik
-- **Email**: [À compléter]
-- **ORCID**: [À compléter]
+- **Author**: Benseddik. Ahmed
+- **Email**: benseddik.ahmed@gmail.com
+- **ORCID**: https://orcid.org/0009-0005-6308-8171
 
 ## 🙏 Acknowledgments
 
