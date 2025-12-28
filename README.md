@@ -5,7 +5,7 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Tests Passing](https://img.shields.io/badge/tests-42%20passing-brightgreen.svg)]()
 [![DOI](https://img.shields.io/badge/DOI-JOCCH%202024-blue)](https://dl.acm.org/journal/jocch)
-![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18055206.svg)](https://doi.org/10.5281/zenodo.18055206)
+![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18055206.svg)
 
 ## 🎯 Vue d'ensemble
 
