@@ -303,7 +303,7 @@ Si vous utilisez ce framework dans vos recherches, merci de citer:
 
 - 📧 Email: [votre.email@example.com]
 - 💬 Discord: [lien serveur]
-- 🐛 Issues: [GitHub Issues](https://github.com/VOTRE_USERNAME/EAIFCH-Framework/issues)
+- 🐛 Issues: https://github.com/benseddikahmed-sudo/EAIFCH-Ethical-Framework-for-Cultural-Heritage
 - 📖 Wiki: [GitHub Wiki](https://github.com/VOTRE_USERNAME/EAIFCH-Framework/wiki)
 
 ## 🙏 Remerciements
