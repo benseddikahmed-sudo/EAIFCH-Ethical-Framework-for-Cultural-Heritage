@@ -225,7 +225,7 @@ EAIFCH-Framework/
 
 1. **Installation locale**
    ```bash
-   git clone https://github.com/VOTRE_USERNAME/EAIFCH-Framework.git
+   git clone https://github.com/benseddikahmed-sudo/EAIFCH-Ethical-Framework-for-Cultural-Heritage.git
    cd EAIFCH-Framework
    pip install -e .
    ```
