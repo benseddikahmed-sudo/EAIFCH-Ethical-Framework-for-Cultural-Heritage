@@ -4,7 +4,7 @@
 **Auteur**: Benseddik.Ahmed  
 **Version**: 2.0.0  
 **Date**: Décembre 2025  
-**DOI**: https://doi.org/10.5281/zenodo.18048554
+**DOI**:(https://zenodo.org/badge/DOI/10.5281/zenodo.18055206.svg
 
 ---
 
