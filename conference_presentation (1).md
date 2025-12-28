@@ -18,7 +18,7 @@ Ethical AI Framework for Cultural Heritage (EAIFCH)
 📧 contact@eaifch.org  
 🔗 github.com/eaifch/module1  
 📄 DOI: 10.5281/zenodo.18048554
-
+https://doi.org/10.5281/zenodo.18048554
 *ACM Conference on Computing and Cultural Heritage*  
 *September 2026*
 
