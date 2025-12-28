@@ -242,21 +242,14 @@ Nous accueillons les contributions ! Consultez [CONTRIBUTING.md](CONTRIBUTING.md
 Si vous utilisez EAIFCH dans votre recherche, veuillez citer :
 
 ```bibtex
-@article{benseddik2024eaifch,
-  title={Contextual Ethical Framework for Artificial Intelligence in the Management of Cultural Heritage},
-  author={Ben Seddik, Ahmed and [Co-authors]},
-  journal={Journal on Computing and Cultural Heritage},
-  year={2024},
-  publisher={ACM}
-}
-```
-
----
+@article{benseddik2024eaifch,{Contextual Ethical Framework for Artificial Intelligence in the Management of Cultural Heritage},
+  author={Benseddik, Ahmed 
+  
 
 ## 📞 Contact & Support
 
-- **Issues GitHub** : [github.com/benseddikahmed-sudo/EAIFCH/issues](https://github.com/benseddikahmed-sudo/EAIFCH-Ethical-Framework-for-Cultural-Heritage/issues)
-- **Email** : [votre-email@institution.fr]
+- **Issues GitHub** :https://github.com/benseddikahmed-sudo/EAIFCH-Ethical-Framework-for-Cultural-Heritage
+- **Email** : benseddik.ahmed@gmail.com
 - **Documentation** : [eaifch.readthedocs.io](https://eaifch.readthedocs.io)
 
 ---
