@@ -1,0 +1,295 @@
+# EAIFCH Makefile
+# Convenient commands for development, testing, and deployment
+
+.PHONY: help install install-dev test test-unit test-integration test-coverage lint format clean docs docker run-api run-dashboard deploy
+
+# Default target
+.DEFAULT_GOAL := help
+
+# Colors for output
+RED := \033[0;31m
+GREEN := \033[0;32m
+YELLOW := \033[0;33m
+BLUE := \033[0;34m
+NC := \033[0m # No Color
+
+help: ## Show this help message
+	@echo "$(BLUE)EAIFCH - Ethical AI Framework for Cultural Heritage$(NC)"
+	@echo "$(YELLOW)Available commands:$(NC)"
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "  $(GREEN)%-20s$(NC) %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+
+##@ Installation
+
+install: ## Install package in production mode
+	@echo "$(BLUE)Installing EAIFCH...$(NC)"
+	pip install -e .
+	@echo "$(GREEN)✓ Installation complete!$(NC)"
+
+install-dev: ## Install package with development dependencies
+	@echo "$(BLUE)Installing EAIFCH with dev dependencies...$(NC)"
+	pip install -e ".[dev,docs,ml,viz]"
+	pre-commit install
+	@echo "$(GREEN)✓ Development environment ready!$(NC)"
+
+install-rust: ## Build and install Rust engine
+	@echo "$(BLUE)Building Rust engine...$(NC)"
+	cd rust_engine && cargo build --release
+	cp rust_engine/target/release/libeaifch_engine.so /usr/local/lib/
+	@echo "$(GREEN)✓ Rust engine built!$(NC)"
+
+##@ Testing
+
+test: ## Run all tests
+	@echo "$(BLUE)Running all tests...$(NC)"
+	pytest tests/ -v --cov=eaifch --cov-report=term-missing
+	@echo "$(GREEN)✓ Tests complete!$(NC)"
+
+test-unit: ## Run unit tests only
+	@echo "$(BLUE)Running unit tests...$(NC)"
+	pytest tests/ -v -m unit
+
+test-integration: ## Run integration tests only
+	@echo "$(BLUE)Running integration tests...$(NC)"
+	pytest tests/ -v -m integration
+
+test-api: ## Run API tests only
+	@echo "$(BLUE)Running API tests...$(NC)"
+	pytest tests/ -v -m api
+
+test-coverage: ## Run tests with detailed coverage report
+	@echo "$(BLUE)Generating coverage report...$(NC)"
+	pytest tests/ --cov=eaifch --cov-report=html --cov-report=term
+	@echo "$(GREEN)✓ Coverage report generated in htmlcov/index.html$(NC)"
+
+test-rust: ## Run Rust tests
+	@echo "$(BLUE)Running Rust tests...$(NC)"
+	cd rust_engine && cargo test --release
+
+test-watch: ## Run tests in watch mode (requires pytest-watch)
+	@echo "$(BLUE)Starting test watch mode...$(NC)"
+	ptw tests/ -- -v
+
+##@ Code Quality
+
+lint: ## Run all linters
+	@echo "$(BLUE)Running linters...$(NC)"
+	flake8 eaifch tests
+	mypy eaifch --ignore-missing-imports
+	pylint eaifch
+	@echo "$(GREEN)✓ Linting complete!$(NC)"
+
+format: ## Format code with black and isort
+	@echo "$(BLUE)Formatting code...$(NC)"
+	black eaifch tests
+	isort eaifch tests
+	@echo "$(GREEN)✓ Code formatted!$(NC)"
+
+format-check: ## Check code formatting without modifying
+	@echo "$(BLUE)Checking code format...$(NC)"
+	black --check eaifch tests
+	isort --check-only eaifch tests
+
+security: ## Run security checks
+	@echo "$(BLUE)Running security checks...$(NC)"
+	safety check
+	bandit -r eaifch
+	@echo "$(GREEN)✓ Security check complete!$(NC)"
+
+##@ Documentation
+
+docs: ## Build documentation
+	@echo "$(BLUE)Building documentation...$(NC)"
+	cd docs && mkdocs build
+	@echo "$(GREEN)✓ Documentation built in docs/site/$(NC)"
+
+docs-serve: ## Serve documentation locally
+	@echo "$(BLUE)Starting documentation server...$(NC)"
+	cd docs && mkdocs serve
+
+docs-deploy: ## Deploy documentation to GitHub Pages
+	@echo "$(BLUE)Deploying documentation...$(NC)"
+	cd docs && mkdocs gh-deploy
+	@echo "$(GREEN)✓ Documentation deployed!$(NC)"
+
+##@ Docker
+
+docker-build: ## Build Docker image
+	@echo "$(BLUE)Building Docker image...$(NC)"
+	docker build -t eaifch:latest .
+	@echo "$(GREEN)✓ Docker image built!$(NC)"
+
+docker-run: ## Run Docker container
+	@echo "$(BLUE)Running Docker container...$(NC)"
+	docker run -p 8000:8000 eaifch:latest
+
+docker-compose-up: ## Start all services with docker-compose
+	@echo "$(BLUE)Starting services...$(NC)"
+	docker-compose up -d
+	@echo "$(GREEN)✓ Services started!$(NC)"
+	@echo "API: http://localhost:8000"
+	@echo "Dashboard: http://localhost:3000"
+	@echo "Grafana: http://localhost:3001"
+
+docker-compose-down: ## Stop all services
+	@echo "$(BLUE)Stopping services...$(NC)"
+	docker-compose down
+	@echo "$(GREEN)✓ Services stopped!$(NC)"
+
+docker-compose-logs: ## View logs from all services
+	docker-compose logs -f
+
+##@ Application
+
+run-api: ## Run API server locally
+	@echo "$(BLUE)Starting API server...$(NC)"
+	uvicorn eaifch.api:app --reload --host 0.0.0.0 --port 8000
+
+run-api-prod: ## Run API server in production mode
+	@echo "$(BLUE)Starting API server (production)...$(NC)"
+	uvicorn eaifch.api:app --host 0.0.0.0 --port 8000 --workers 4
+
+run-dashboard: ## Run dashboard development server
+	@echo "$(BLUE)Starting dashboard...$(NC)"
+	cd dashboard && npm start
+
+run-all: ## Run API and dashboard concurrently
+	@echo "$(BLUE)Starting all services...$(NC)"
+	make -j2 run-api run-dashboard
+
+##@ Database
+
+db-init: ## Initialize database
+	@echo "$(BLUE)Initializing database...$(NC)"
+	python -m eaifch.db.init
+	@echo "$(GREEN)✓ Database initialized!$(NC)"
+
+db-migrate: ## Run database migrations
+	@echo "$(BLUE)Running migrations...$(NC)"
+	alembic upgrade head
+	@echo "$(GREEN)✓ Migrations complete!$(NC)"
+
+db-reset: ## Reset database (WARNING: deletes all data)
+	@echo "$(RED)WARNING: This will delete all data!$(NC)"
+	@read -p "Are you sure? [y/N] " -n 1 -r; \
+	if [[ $$REPLY =~ ^[Yy]$$ ]]; then \
+		python -m eaifch.db.reset; \
+		echo "$(GREEN)✓ Database reset!$(NC)"; \
+	fi
+
+##@ Utilities
+
+clean: ## Clean build artifacts and cache files
+	@echo "$(BLUE)Cleaning project...$(NC)"
+	find . -type f -name '*.pyc' -delete
+	find . -type d -name '__pycache__' -delete
+	find . -type d -name '*.egg-info' -exec rm -rf {} +
+	rm -rf build dist .coverage htmlcov .pytest_cache .mypy_cache
+	@echo "$(GREEN)✓ Project cleaned!$(NC)"
+
+clean-all: clean ## Clean everything including venv and node_modules
+	@echo "$(BLUE)Deep cleaning...$(NC)"
+	rm -rf venv env .venv
+	rm -rf dashboard/node_modules
+	rm -rf rust_engine/target
+	@echo "$(GREEN)✓ Deep clean complete!$(NC)"
+
+setup: install-dev db-init ## Complete setup (install + init database)
+	@echo "$(GREEN)✓ Setup complete! Run 'make run-api' to start.$(NC)"
+
+benchmark: ## Run performance benchmarks
+	@echo "$(BLUE)Running benchmarks...$(NC)"
+	python -m pytest tests/benchmark/ -v --benchmark-only
+	@echo "$(GREEN)✓ Benchmarks complete!$(NC)"
+
+profile: ## Profile the application
+	@echo "$(BLUE)Profiling application...$(NC)"
+	python -m cProfile -o profile_results.prof -m eaifch.cli assess --profile
+	python -m pstats profile_results.prof
+	@echo "$(GREEN)✓ Profiling complete! See profile_results.prof$(NC)"
+
+##@ Release
+
+version: ## Show current version
+	@python -c "from eaifch import __version__; print(__version__)"
+
+bump-patch: ## Bump patch version (0.0.X)
+	@echo "$(BLUE)Bumping patch version...$(NC)"
+	bump2version patch
+	@echo "$(GREEN)✓ Version bumped!$(NC)"
+
+bump-minor: ## Bump minor version (0.X.0)
+	@echo "$(BLUE)Bumping minor version...$(NC)"
+	bump2version minor
+	@echo "$(GREEN)✓ Version bumped!$(NC)"
+
+bump-major: ## Bump major version (X.0.0)
+	@echo "$(BLUE)Bumping major version...$(NC)"
+	bump2version major
+	@echo "$(GREEN)✓ Version bumped!$(NC)"
+
+release: test lint format-check ## Prepare release (run all checks)
+	@echo "$(GREEN)✓ All checks passed! Ready to release.$(NC)"
+	@echo "$(YELLOW)Next steps:$(NC)"
+	@echo "  1. Run 'make bump-patch/minor/major'"
+	@echo "  2. git push && git push --tags"
+	@echo "  3. Create GitHub release"
+
+publish: ## Publish to PyPI
+	@echo "$(BLUE)Publishing to PyPI...$(NC)"
+	python -m build
+	twine check dist/*
+	twine upload dist/*
+	@echo "$(GREEN)✓ Published to PyPI!$(NC)"
+
+##@ CI/CD
+
+ci-test: ## Run CI tests (same as CI pipeline)
+	@echo "$(BLUE)Running CI test suite...$(NC)"
+	pytest tests/ -v --cov=eaifch --cov-report=xml --cov-report=term
+
+ci-lint: ## Run CI linting (same as CI pipeline)
+	@echo "$(BLUE)Running CI linting...$(NC)"
+	flake8 eaifch --count --select=E9,F63,F7,F82 --show-source --statistics
+	black --check eaifch tests
+	mypy eaifch --ignore-missing-imports
+
+ci-full: ci-lint ci-test security ## Run full CI pipeline locally
+	@echo "$(GREEN)✓ Full CI pipeline completed!$(NC)"
+
+##@ Development Tools
+
+shell: ## Start IPython shell with EAIFCH loaded
+	@echo "$(BLUE)Starting IPython shell...$(NC)"
+	ipython -c "from eaifch import *; print('EAIFCH loaded. Happy coding!')" -i
+
+notebook: ## Start Jupyter notebook
+	@echo "$(BLUE)Starting Jupyter notebook...$(NC)"
+	jupyter notebook
+
+example-%: ## Run specific example (e.g., make example-basic)
+	@echo "$(BLUE)Running example: $*$(NC)"
+	python examples/$(subst example-,,$@).py
+
+demo: ## Run interactive demo
+	@echo "$(BLUE)Starting interactive demo...$(NC)"
+	python -m eaifch.demo
+
+##@ Monitoring
+
+logs: ## View application logs
+	tail -f logs/eaifch.log
+
+logs-api: ## View API logs
+	tail -f logs/api.log
+
+logs-errors: ## View error logs only
+	grep ERROR logs/eaifch.log | tail -50
+
+stats: ## Show project statistics
+	@echo "$(BLUE)Project Statistics$(NC)"
+	@echo "Lines of Python code:"
+	@find eaifch -name '*.py' | xargs wc -l | tail -1
+	@echo "Number of tests:"
+	@find tests -name 'test_*.py' | xargs grep -c "def test_" | awk '{s+=$$1} END {print s}'
+	@echo "Test coverage:"
+	@pytest --cov=eaifch --cov-report=term | grep TOTAL

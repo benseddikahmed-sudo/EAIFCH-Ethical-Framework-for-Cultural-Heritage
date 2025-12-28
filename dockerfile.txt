@@ -1,0 +1,78 @@
+# EAIFCH - Ethical AI Framework for Cultural Heritage
+# Multi-stage Docker build for production deployment
+
+# Stage 1: Build Rust engine
+FROM rust:1.75-slim as rust-builder
+
+WORKDIR /build
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y \
+    pkg-config \
+    libssl-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy Rust project files
+COPY rust_engine/Cargo.toml rust_engine/Cargo.lock ./
+COPY rust_engine/src ./src
+
+# Build Rust engine in release mode
+RUN cargo build --release
+
+# Stage 2: Python environment
+FROM python:3.10-slim
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    DEBIAN_FRONTEND=noninteractive
+
+# Create non-root user
+RUN groupadd -r eaifch && useradd -r -g eaifch eaifch
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    g++ \
+    git \
+    curl \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements first for better caching
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --upgrade pip setuptools wheel && \
+    pip install -r requirements.txt
+
+# Copy Rust compiled library from builder stage
+COPY --from=rust-builder /build/target/release/libeaifch_engine.so /usr/local/lib/
+
+# Copy application code
+COPY . .
+
+# Install the package
+RUN pip install -e .
+
+# Create necessary directories
+RUN mkdir -p /app/data /app/logs /app/cache && \
+    chown -R eaifch:eaifch /app
+
+# Switch to non-root user
+USER eaifch
+
+# Expose API port
+EXPOSE 8000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+# Default command: run API server
+CMD ["uvicorn", "eaifch.api:app", "--host", "0.0.0.0", "--port", "8000"]

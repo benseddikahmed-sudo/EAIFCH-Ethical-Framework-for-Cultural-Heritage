@@ -1,0 +1,82 @@
+{
+  "name": "Louvre Virtual Museum Guide",
+  "description": "AI-powered virtual tour system with personalized recommendations and natural language interaction for the Louvre Museum collection",
+  "location": "Musée du Louvre, Paris, France",
+  "heritage_type": "tangible",
+  "ai_techniques": [
+    "natural_language_processing",
+    "recommendation_system",
+    "computer_vision",
+    "image_recognition"
+  ],
+  "stakeholders": [
+    "Museum curators",
+    "Visitors",
+    "IT department",
+    "Educational team",
+    "Conservation experts"
+  ],
+  
+  "_comment_compliance": "=== ETHICAL COMPLIANCE INDICATORS ===",
+  
+  "data_encryption": true,
+  "bias_testing": false,
+  "indigenous_consultation": false,
+  "model_explainability": false,
+  "human_oversight": true,
+  "environmental_impact_assessed": true,
+  "gdpr_compliant": true,
+  "accessibility_wcag": true,
+  "cultural_expert_review": true,
+  
+  "_comment_data": "=== DATA HANDLING ===",
+  
+  "contains_sensitive_data": false,
+  "data_collection_justified": true,
+  "access_control_implemented": true,
+  
+  "_comment_training": "=== TRAINING DATA ===",
+  
+  "uses_training_data": true,
+  "dataset_diversity_assessed": false,
+  
+  "_comment_documentation": "=== DOCUMENTATION ===",
+  
+  "documentation_complete": true,
+  
+  "_comment_access": "=== ACCESS & FAIRNESS ===",
+  
+  "access_barriers_assessed": true,
+  
+  "_comment_cultural": "=== CULTURAL CONSIDERATIONS ===",
+  
+  "involves_indigenous_heritage": false,
+  "contains_sacred_content": false,
+  "religious_authority_approval": false,
+  
+  "_comment_legal": "=== LEGAL COMPLIANCE ===",
+  
+  "processes_personal_data": true,
+  "ip_rights_cleared": true,
+  
+  "_comment_advanced": "=== ADVANCED COMPLIANCE (Optional) ===",
+  
+  "risk_assessment_conducted": true,
+  "data_governance_policy": true,
+  "gdpr_lawful_basis": true,
+  "data_subject_rights_implemented": true,
+  "privacy_by_design": true,
+  "authenticity_preserved": true,
+  "community_involved": true,
+  "safeguarding_plan": true,
+  "cultural_diversity_respected": true,
+  "professional_standards": true,
+  "provenance_documented": true,
+  "ethical_data_handling": true,
+  
+  "_comment_metadata": "=== PROJECT METADATA ===",
+  
+  "budget": 250000,
+  "timeline_months": 18,
+  "team_size": 12
+}
