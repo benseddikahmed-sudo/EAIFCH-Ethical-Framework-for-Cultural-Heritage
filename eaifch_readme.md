@@ -245,7 +245,7 @@ This project is licensed under the GNU General Public License v3.0 - see [LICENS
 
 - **Documentation**: [https://eaifch.readthedocs.io](https://eaifch.readthedocs.io)
 - **Pre-registration**: Open Science Framework
-- **Data Archive**: [Zenodo with DOI](https://doi.org/10.5281/zenodo.18055206)
+- **Data Archive**:https://doi.org/10.5281/zenodo.18055206
 - **Issue Tracker**(https://github.com/benseddikahmed-sudo/EAIFCH-Ethical-Framework-for-Cultural-Heritage)
 
 ## 📧 Contact
