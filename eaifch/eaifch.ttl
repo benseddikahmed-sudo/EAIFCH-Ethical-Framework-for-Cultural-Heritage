@@ -11,19 +11,22 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 # Métadonnées de l'ontologie
 eaifch: a owl:Ontology ;
     dct:title "EAIFCH Ontology - Ethical AI Framework for Cultural Heritage"@en ;
-    dct:description "Vocabulaire Linked Data pour l'évaluation éthique et la gouvernance des biens du patrimoine culturel numérisé."@fr ;
+    dct:title "Ontologie EAIFCH - Cadre d'IA Éthique pour le Patrimoine Culturel"@fr ;
+    dct:description "Vocabulaire Linked Data pour l'évaluation éthique, la classification de sensibilité et la gouvernance des biens du patrimoine culturel numérisé."@fr ;
     dct:creator <https://orcid.org/0009-0005-6308-8171> ;
     dct:license <http://creativecommons.org/licenses/by/4.0/> ;
-    dct:issued "2026"^^xsd:gYear .
+    dct:issued "2026"^^xsd:gYear ;
+    owl:versionInfo "1.0" .
 
-# Classes principales (exemples)
+# Classes principales
 eaifch:HeritageItem a owl:Class ;
     rdfs:label "Bien du patrimoine culturel"@fr ;
-    rdfs:comment "Tout objet, document ou enregistrement soumis à évaluation éthique." .
+    rdfs:comment "Tout objet, document, enregistrement ou site soumis à évaluation éthique." .
 
 eaifch:SensitivityLevel a owl:Class ;
     rdfs:label "Niveau de sensibilité"@fr .
@@ -34,4 +37,19 @@ eaifch:Critical a eaifch:SensitivityLevel ;
 eaifch:High a eaifch:SensitivityLevel ;
     rdfs:label "Élevé"@fr .
 
-# À compléter par la suite...
+eaifch:Medium a eaifch:SensitivityLevel ;
+    rdfs:label "Moyen"@fr .
+
+eaifch:Low a eaifch:SensitivityLevel ;
+    rdfs:label "Faible"@fr .
+
+# Propriétés importantes (exemples)
+eaifch:hasSensitivityLevel a owl:ObjectProperty ;
+    rdfs:domain eaifch:HeritageItem ;
+    rdfs:range eaifch:SensitivityLevel ;
+    rdfs:label "a pour niveau de sensibilité"@fr .
+
+eaifch:requiresGovernance a owl:ObjectProperty ;
+    rdfs:label "nécessite une gouvernance communautaire"@fr .
+
+# À enrichir par la suite avec les 5 dimensions, 20 indicateurs, etc.
