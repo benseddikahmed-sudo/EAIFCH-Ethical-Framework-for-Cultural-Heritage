@@ -9,19 +9,7 @@ EAIFCH est un vocabulaire Linked Data qui permet d’opérationnaliser les princ
 
 ## Liens principaux
 
-- **Documentation complète (générée par WIDOCO)** → [https://w3id.org/eaifch/doc/](https://w3id.org/eaifch/doc/)
-- **Ontologie (format Turtle)** → [https://w3id.org/eaifch/ontology](https://w3id.org/eaifch/ontology)
+- **Documentation complète (générée par WIDOCO)** → [Consulter la documentation](./docs/eaifch/docs/index.html)
+- **Ontologie (format Turtle)** → [eaifch.ttl](./eaifch.ttl)
 - **Dépôt OSF (code source, article, jeux de données)** → [https://doi.org/10.17605/OSF.IO/Y8VBU](https://doi.org/10.17605/OSF.IO/Y8VBU)
 - **Exemples de requêtes SPARQL** → [dossier sparql/](./sparql/)
-
-## Citation recommandée
-
-```bibtex
-@software{benseddik_eaifch_2026,
-  author    = {Benseddik, Ahmed},
-  title     = {EAIFCH Ontology},
-  year      = {2026},
-  publisher = {w3id.org},
-  url       = {[https://w3id.org/eaifch/](https://w3id.org/eaifch/)},
-  doi       = {10.17605/OSF.IO/Y8VBU}
-}
